@@ -19,10 +19,24 @@ public class Movement : MonoBehaviour
      
     }
 
+    public void moveUnit()
+    {
+        if (transform.parent.GetComponent<UnitController>().hasMoved == false)
+        {
+            transform.parent.GetComponent<UnitController>().hasMoved = true;
+            transform.parent.position = new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z);
+            transform.parent.GetComponent<UnitController>().disableMovement();
+        }
+
+    }
     void OnMouseDown()
     {
-        gameObject.GetComponentInParent<UnitController>().hasMoved = true;
-        // Destroy the gameObject after clicking on it
-        transform.parent.position = new Vector3(gameObject.transform.position.x, 1 , gameObject.transform.position.z);
+        //if (gameObject.GetComponentInParent<UnitController>().hasMoved== false)
+        //{
+        //    gameObject.GetComponentInParent<UnitController>().hasMoved = true;
+        //    // Destroy the gameObject after clicking on it
+        //    transform.parent.position = new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z);
+        //}   
     }
+
 }

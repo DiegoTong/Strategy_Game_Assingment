@@ -14,21 +14,46 @@ public class UnitController : MonoBehaviour
     public bool isSelected;
     public int id;
     public SpawnManager spawnManager_script;
+    public string unitName;
+    public GameObject gridTile;
+    public bool hasValidTarget;
     // Start is called before the first frame update
     void Start()
     {
+        unitName = gameObject.name;
         gameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
-        id = spawnManager_script.activebuildercount;
+        id = gameManager_script.number_of_builders;
         InstantiateTiles(movement);
         hasMoved = false;
         hasActed = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-    
+    //    CheckForTargets();
+    }
+
+    public void disableMovement()
+    {
+        if(hasMoved == true)
+        {
+            foreach (Transform child in transform)
+            {
+                //child.gameObject.GetComponent<Renderer>().material.color = new Color(1.0f, 0.0f, 0.0f, 0.0f);
+                child.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (Transform child in transform)
+            {
+               // child.gameObject.GetComponent<Renderer>().material.color = new Color(1.0f, 0.0f, 0.0f, 0.5f);
+                child.gameObject.SetActive(true);
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -37,6 +62,33 @@ public class UnitController : MonoBehaviour
             gameManager_script.resources++;
             Destroy(other.gameObject);
         }
+        if(other.gameObject.name == "Grid Tile(Clone)")
+        {
+            gridTile = other.gameObject;
+        }
+    }
+    private void CheckForTargets()
+    {
+        for(int i =0; i<4;i++)
+        {
+            if (gridTile.GetComponent<GridStats>().neighbours[i].GetComponent<GridStats>().objectOnTileType == GridStats.objectType.ENEMY)
+            {
+                hasValidTarget = true;
+            }        
+            else if(gridTile.GetComponent<GridStats>().neighbours[i].GetComponent<GridStats>().objectOnTileType == GridStats.objectType.UNIT)
+            {
+                hasValidTarget = false;
+            }
+            else if (gridTile.GetComponent<GridStats>().neighbours[i].GetComponent<GridStats>().objectOnTileType == GridStats.objectType.BASE)
+            {
+                hasValidTarget = false;
+            }
+            else
+            {
+                hasValidTarget = false;
+            }
+        }
+        
     }
     private void InstantiateTiles(int numTiles)
     {

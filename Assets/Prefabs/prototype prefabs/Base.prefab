@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1368381105264226527}
   - component: {fileID: 1368381105264226515}
   - component: {fileID: 1368381105264226524}
-  - component: {fileID: 1368381105264226525}
   - component: {fileID: 777766486}
+  - component: {fileID: 927855736298070673}
   m_Layer: 0
   m_Name: Spawn Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,20 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1368381105264226525
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368381105264226520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &777766486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +93,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &927855736298070673
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368381105264226520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 6.123235e-17}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1368381105550552963
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,11 +117,11 @@ GameObject:
   - component: {fileID: 1368381105550552962}
   - component: {fileID: 1368381105550552966}
   - component: {fileID: 1368381105550552967}
-  - component: {fileID: 1368381105550552960}
   - component: {fileID: 557389199}
+  - component: {fileID: 8836344895476733940}
   m_Layer: 0
   m_Name: Spawn Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,20 +187,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1368381105550552960
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368381105550552963}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &557389199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +199,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8836344895476733940
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368381105550552963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 6.123235e-17}
+  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!1 &1368381105931550762
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +258,7 @@ GameObject:
   - component: {fileID: 1368381106280950296}
   - component: {fileID: 1368381106280950297}
   - component: {fileID: 1368381106280950298}
+  - component: {fileID: 1321638832}
   m_Layer: 0
   m_Name: Base
   m_TagString: Base
@@ -337,11 +336,23 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368381106280950299}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1321638832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368381106280950299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd06df16d40ddce4d8b02ff6a9bc2b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1368381106460028675
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,11 +364,11 @@ GameObject:
   - component: {fileID: 1368381106460028674}
   - component: {fileID: 1368381106460028678}
   - component: {fileID: 1368381106460028679}
-  - component: {fileID: 1368381106460028672}
   - component: {fileID: 1591455210}
+  - component: {fileID: 5133591688662134411}
   m_Layer: 0
   m_Name: Spawn Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,20 +434,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1368381106460028672
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368381106460028675}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1591455210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +446,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5133591688662134411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368381106460028675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 6.123235e-17}
+  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!1 &1368381107035073391
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,11 +470,11 @@ GameObject:
   - component: {fileID: 1368381107035073390}
   - component: {fileID: 1368381107035073378}
   - component: {fileID: 1368381107035073379}
-  - component: {fileID: 1368381107035073388}
   - component: {fileID: 1767950517}
+  - component: {fileID: 6938221712245417491}
   m_Layer: 0
   m_Name: Spawn Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -530,20 +540,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1368381107035073388
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368381107035073391}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1767950517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,3 +552,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6938221712245417491
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368381107035073391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 6.123235e-17}
+  m_Center: {x: 0, y: 0, z: 0}

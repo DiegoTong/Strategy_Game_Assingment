@@ -27,5 +27,26 @@ public class RotateCamera : MonoBehaviour
         {
             gameObject.transform.Rotate(new Vector3(0, -90, 0) * Time.deltaTime, Space.World);
         }
+        CheckBoundaries();
+    }
+
+    void CheckBoundaries()
+    {
+        if (gameObject.transform.position.x < -40)
+        {
+            gameObject.transform.position = new Vector3(-40, gameObject.transform.position.y, gameObject.transform.position.z);
+        }
+        if (gameObject.transform.position.x > 40)
+        {
+            gameObject.transform.position = new Vector3(40, gameObject.transform.position.y, gameObject.transform.position.z);
+        }
+        if (gameObject.transform.position.z < -40)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -40);
+        }
+        if (gameObject.transform.position.z > 40)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 40);
+        }
     }
 }
