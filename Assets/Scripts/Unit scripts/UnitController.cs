@@ -33,9 +33,16 @@ public class UnitController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    //    CheckForTargets();
+        CheckForTargets();
+        destroyUnit();
     }
-
+    public void destroyUnit()
+    {
+        if(health <=0)
+        {
+            Destroy(gameObject);
+        }
+    }
     public void disableMovement()
     {
         if(hasMoved == true)
@@ -43,7 +50,10 @@ public class UnitController : MonoBehaviour
             foreach (Transform child in transform)
             {
                 //child.gameObject.GetComponent<Renderer>().material.color = new Color(1.0f, 0.0f, 0.0f, 0.0f);
-                child.gameObject.SetActive(false);
+                if(child.gameObject.tag == "Tile")
+                {
+                    child.gameObject.SetActive(false);
+                }
             }
         }
         else
@@ -57,7 +67,7 @@ public class UnitController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Gold"))
+        if (other.gameObject.CompareTag("Gold") && this.gameObject.tag == "Friendly")
         {
             gameManager_script.resources++;
             Destroy(other.gameObject);
@@ -66,29 +76,38 @@ public class UnitController : MonoBehaviour
         {
             gridTile = other.gameObject;
         }
+        if(this.gameObject.tag == "Base" && other.gameObject.tag == "Enemy")
+        {
+            this.gameObject.GetComponent<Building>().health -= this.gameObject.GetComponent<Building>().health - other.gameObject.GetComponent<Enemy>().attack;
+        }
     }
     private void CheckForTargets()
     {
-        for(int i =0; i<4;i++)
+        foreach (GameObject obj in gridTile.GetComponent<GridStats>().neighbours)
         {
-            if (gridTile.GetComponent<GridStats>().neighbours[i].GetComponent<GridStats>().objectOnTileType == GridStats.objectType.ENEMY)
+            if (obj.GetComponent<GridStats>().objectOnTileType == GridStats.objectType.ENEMY)
             {
+                obj.GetComponent<GridStats>().target = true;
                 hasValidTarget = true;
-            }        
-            else if(gridTile.GetComponent<GridStats>().neighbours[i].GetComponent<GridStats>().objectOnTileType == GridStats.objectType.UNIT)
+                break;
+            }
+            else if (obj.GetComponent<GridStats>().objectOnTileType == GridStats.objectType.UNIT)
             {
+                // gridTile.GetComponent<GridStats>().target = true;
                 hasValidTarget = false;
             }
-            else if (gridTile.GetComponent<GridStats>().neighbours[i].GetComponent<GridStats>().objectOnTileType == GridStats.objectType.BASE)
+            else if (obj.GetComponent<GridStats>().objectOnTileType == GridStats.objectType.BASE)
             {
+                //  gridTile.GetComponent<GridStats>().target = true;
                 hasValidTarget = false;
             }
             else
             {
+                //gridTile.GetComponent<GridStats>().target = true;
                 hasValidTarget = false;
             }
         }
-        
+
     }
     private void InstantiateTiles(int numTiles)
     {

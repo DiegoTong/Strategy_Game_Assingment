@@ -11,6 +11,7 @@ public class Enemy : UnitController
     void Start()
     {
         hasMoved = false;
+        hasActed = false;
         closestTarget = new Vector3(0, 0, 0);
         targets = GameObject.FindGameObjectsWithTag("Base");
         foreach(GameObject chooseTarget in targets)
@@ -26,8 +27,8 @@ public class Enemy : UnitController
     void Update()
     {
         EnemyHasMoved();
+        destroyUnit();
     }
-
     void EnemyHasMoved()
     {
         if(hasMoved == false)

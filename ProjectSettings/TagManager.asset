@@ -9,6 +9,7 @@ TagManager:
   - Base
   - Enemy
   - Tile
+  - Building
   layers:
   - Default
   - TransparentFX

@@ -29,14 +29,4 @@ public class Movement : MonoBehaviour
         }
 
     }
-    void OnMouseDown()
-    {
-        //if (gameObject.GetComponentInParent<UnitController>().hasMoved== false)
-        //{
-        //    gameObject.GetComponentInParent<UnitController>().hasMoved = true;
-        //    // Destroy the gameObject after clicking on it
-        //    transform.parent.position = new Vector3(gameObject.transform.position.x, 1, gameObject.transform.position.z);
-        //}   
-    }
-
 }

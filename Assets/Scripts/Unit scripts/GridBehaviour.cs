@@ -56,10 +56,10 @@ public class GridBehaviour : MonoBehaviour
             }
             else
             {
-                obj.GetComponent<GridStats>().neighbours[0] = gridArray[obj.GetComponent<GridStats>().x + 1, obj.GetComponent<GridStats>().y];
-                obj.GetComponent<GridStats>().neighbours[1] = gridArray[obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y + 1];
-                obj.GetComponent<GridStats>().neighbours[2] = gridArray[obj.GetComponent<GridStats>().x - 1, obj.GetComponent<GridStats>().y];
-                obj.GetComponent<GridStats>().neighbours[3] = gridArray[obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y - 1];
+                //obj.GetComponent<GridStats>().neighbours[0] = gridArray[obj.GetComponent<GridStats>().x + 1, obj.GetComponent<GridStats>().y];
+                //obj.GetComponent<GridStats>().neighbours[1] = gridArray[obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y + 1];
+                //obj.GetComponent<GridStats>().neighbours[2] = gridArray[obj.GetComponent<GridStats>().x - 1, obj.GetComponent<GridStats>().y];
+                //obj.GetComponent<GridStats>().neighbours[3] = gridArray[obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y - 1];
             }
   
         }

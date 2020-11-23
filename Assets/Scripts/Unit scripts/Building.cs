@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+public class Building : UnitController
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,6 @@ public class Building : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        destroyUnit();
     }
 }

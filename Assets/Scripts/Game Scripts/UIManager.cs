@@ -12,13 +12,21 @@ public class UIManager : MonoBehaviour
     public Text spawnbuttonText;
     public Slider healthBar;
     public Text unitName;
+    public Button attacButtonTop;
+    public Button attacButtonBottom;
+    public Button attacButtonLeft;
+    public Button attacButtonRight;
     // Start is called before the first frame update
     void Start()
     {
         spawnbutton.gameObject.SetActive(false);
         attacButton.gameObject.SetActive(false);
         skipButton.gameObject.SetActive(false);
-    }
+        attacButtonTop.gameObject.SetActive(false);
+        attacButtonBottom.gameObject.SetActive(false);
+        attacButtonLeft.gameObject.SetActive(false);
+        attacButtonRight.gameObject.SetActive(false);
+}
 
     // Update is called once per frame
     void Update()
