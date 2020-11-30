@@ -55,6 +55,7 @@ public class Enemy : UnitController
         }
         hasActed = true;
     }
+    // //code inpsired by https://www.youtube.com/watch?v=2NVEqBeXdBk 
     private GridStats FindLowestFCost(List<GridStats> tileList)
     {
         GridStats lowest = tileList[0];
@@ -68,11 +69,13 @@ public class Enemy : UnitController
         tileList.Remove(lowest);
         return lowest;
     }
+    // //code inpsired by https://www.youtube.com/watch?v=2NVEqBeXdBk 
     private void findPath()
     {
         GameObject targetTile = getTile(activeTarget);
         calculatePath(targetTile.GetComponent<GridStats>());
     }
+    // //code inpsired by https://www.youtube.com/watch?v=2NVEqBeXdBk 
     private void calculatePath(GridStats targetTile)
     {
         targets = GameObject.FindGameObjectsWithTag("Base");
@@ -122,9 +125,7 @@ public class Enemy : UnitController
                     openList.Add(tile);
                 }
             }
-        }
-        // IF THIS IS 0 THEN THERE IS NO PATH, FIGURE OUT TO CHANGE PATH
-    
+        }   
     }
 
     public void ComputeAdjacencyList(GridStats targetT)

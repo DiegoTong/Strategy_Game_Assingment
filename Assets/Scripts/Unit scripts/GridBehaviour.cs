@@ -29,7 +29,7 @@ public class GridBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        initialSetup();
+
     }
     void GenerateGrid()
     {
@@ -44,24 +44,6 @@ public class GridBehaviour : MonoBehaviour
                 gridTile.GetComponent<GridStats>().y = j;
                 gridArray[i, j] = gridTile;
             }
-        }
-    }
-    void initialSetup()
-    {
-        foreach (GameObject obj in gridArray)
-        {
-            if((obj.GetComponent<GridStats>().x - 1 <=0)|| (obj.GetComponent<GridStats>().x + 1 >= columns)|| (obj.GetComponent<GridStats>().y + 1 >= rows)||(obj.GetComponent<GridStats>().y - 1 <= 0))
-            {
-
-            }
-            else
-            {
-                //obj.GetComponent<GridStats>().neighbours[0] = gridArray[obj.GetComponent<GridStats>().x + 1, obj.GetComponent<GridStats>().y];
-                //obj.GetComponent<GridStats>().neighbours[1] = gridArray[obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y + 1];
-                //obj.GetComponent<GridStats>().neighbours[2] = gridArray[obj.GetComponent<GridStats>().x - 1, obj.GetComponent<GridStats>().y];
-                //obj.GetComponent<GridStats>().neighbours[3] = gridArray[obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y - 1];
-            }
-  
         }
     }
 }

@@ -24,6 +24,7 @@ public class UnitController : MonoBehaviour
     public List<GridStats> visibleTiles = new List<GridStats>();
     public GameObject[] allTiles;
     public int deathsound;
+    public GameObject explosion;
     Stack<GridStats> path = new Stack<GridStats>();
 
     // Start is called before the first frame update
@@ -36,7 +37,7 @@ public class UnitController : MonoBehaviour
         spawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
         audioManager_Script = GameObject.Find("Game Manager").GetComponent<AudioManager>();
         id = gameManager_script.number_of_builders;
-        InstantiateTiles(movement);
+        //InstantiateTiles(movement);
         hasMoved = false;
         hasActed = false;
         removeVision();
@@ -48,7 +49,6 @@ public class UnitController : MonoBehaviour
     {
           CheckForTargets();
           destroyUnit(deathsound);
-      //  
     }
     public void destroyUnit(int i)
     {
@@ -57,6 +57,7 @@ public class UnitController : MonoBehaviour
             audioManager_Script.loadClip(i);
             removeSelectableTiles();
             removeVision();
+            Instantiate(explosion, gameObject.transform.position,gameObject.transform.rotation);
             Destroy(gameObject);
         }
     }
@@ -157,6 +158,7 @@ public class UnitController : MonoBehaviour
         }
         return targetTile;
     }
+
     public void getCurrentTile()
     {
         gridTile = getTile(gameObject);
@@ -170,7 +172,7 @@ public class UnitController : MonoBehaviour
             t.findNeighbours();
         }
     }
-    //https://www.youtube.com/watch?v=2NVEqBeXdBk
+    //code inpsired by https://www.youtube.com/watch?v=2NVEqBeXdBk 
     public void FindSelectableTiles()
     {
         ComputeAdjacencyList();
@@ -238,6 +240,7 @@ public class UnitController : MonoBehaviour
         }
         visibleTiles.Clear();
     }
+    //code inpsired by https://www.youtube.com/watch?v=2NVEqBeXdBk 
     public void removeSelectableTiles()
     {
         if(gridTile != null)

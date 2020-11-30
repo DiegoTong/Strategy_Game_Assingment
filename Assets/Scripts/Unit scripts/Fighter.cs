@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fighter : MonoBehaviour
+public class Fighter : UnitController
 {
     // Start is called before the first frame update
     void Start()

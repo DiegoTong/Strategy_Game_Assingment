@@ -43,16 +43,26 @@ public class GameManager : MonoBehaviour
         spawnManager_script.SpawnGold();
         spawnInGold = true;
         maxCap = 5;
+        nextUnit = gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+        checkNextUnit();
         SelectUnit();
         CheckActiveUnits();
         CheckActionButton(nextTurn);
         CheckGameOver();
         populateUI();
+    }
+
+    void checkNextUnit()
+    {
+        if(nextUnit == null)
+        {
+            nextUnit = gameObject;
+        }
     }
     void SelectUnit()
     {
@@ -66,7 +76,7 @@ public class GameManager : MonoBehaviour
             {
                 if (EventSystem.current.IsPointerOverGameObject())
                 {
-                   
+
                 }
                 else
                 {
@@ -79,12 +89,28 @@ public class GameManager : MonoBehaviour
                         {
                             Indicator.SetActive(true);
                             Indicator.transform.position = new Vector3(hit.collider.gameObject.transform.position.x, 2.5f, hit.collider.gameObject.transform.position.z);
-                            nextUnit.GetComponent<UnitController>().removeSelectableTiles();
+                            if (nextUnit.name != "Game Manager" )
+                            {
+                                nextUnit.GetComponent<UnitController>().removeSelectableTiles();
+                            }
                             if (hit.collider.tag == "Friendly")
                             {
+                                uiManager_script.disableUIBUttons();
                                 nextUnit = hit.collider.gameObject;
                                 uiManager_script.setStats(nextUnit.GetComponent<UnitController>());
-                                uiManager_script.spawnbutton.gameObject.SetActive(true);
+                                if(hit.collider.name == "Unit(Clone)")
+                                {
+                                    uiManager_script.spawnbutton.gameObject.SetActive(true);
+                                }
+                                else
+                                {
+                                    uiManager_script.spawnbutton.gameObject.SetActive(false);
+                                }
+                                if(hit.collider.name == "GatlingTower(Clone)" || hit.collider.name == "Wall(Clone)")
+                                {
+                                    hit.collider.GetComponent<UnitController>().hasMoved = true;
+                                }
+
                                 if (!nextUnit.GetComponent<UnitController>().hasMoved)
                                 {
                                     uiManager_script.skipButton.gameObject.SetActive(true);
@@ -102,7 +128,6 @@ public class GameManager : MonoBehaviour
                                 {
                                     uiManager_script.attacButton.gameObject.SetActive(false);
                                 }
-                                uiManager_script.disableUIBUttons();
                             }
                             else if (hit.collider.tag == "Enemy")
                             {
@@ -114,6 +139,7 @@ public class GameManager : MonoBehaviour
                             }
                             else if (hit.collider.tag == "Base")
                             {
+                                uiManager_script.disableUIBUttons();
                                 uiManager_script.setStats(hit.collider.GetComponent<UnitController>());
                                 uiManager_script.EnableSpawnButtons();
                                 uiManager_script.attacButton.gameObject.SetActive(false);
@@ -158,6 +184,7 @@ public class GameManager : MonoBehaviour
                                 GetAllVision();
                                 nextUnit.GetComponent<UnitController>().removeSelectableTiles();
                                 nextUnit.GetComponent<UnitController>().hasMoved = true;
+                                uiManager_script.attacButton.gameObject.SetActive(false);
                             }
                         //    uiManager_script.attacButton.gameObject.SetActive(false);
                         //    uiManager_script.spawnbutton.gameObject.SetActive(false);
@@ -175,6 +202,7 @@ public class GameManager : MonoBehaviour
                             audioManager_Script.loadClip(5);
                             hit.collider.GetComponent<UnitController>().health = hit.collider.GetComponent<UnitController>().health - nextUnit.GetComponent<UnitController>().attack;
                             nextUnit.GetComponent<UnitController>().hasActed = true;
+                            uiManager_script.attacButton.gameObject.SetActive(false);
                         }
                         else
                         {
@@ -200,7 +228,6 @@ public class GameManager : MonoBehaviour
 
     public void GetAllVision()
     {
-
         nextUnit.GetComponent<UnitController>().setDarkvision();
         foreach (GameObject obj in allFriendlyUnits)
         {
@@ -327,17 +354,16 @@ public class GameManager : MonoBehaviour
     }
     public void InstantiateEnemies()
     {
-        if (activeGold.Length>0)
+        if (activeGold.Length>0 )
         {
-            spawnInGold = false;
+            spawnInGold = true;
             spawnManager_script.SpawnEnemy(spawnInGold, activeGold[Random.Range(0, activeGold.Length)].transform.position);
         }
         else
         {
-            spawnInGold = true;
+            spawnInGold = false;
             spawnManager_script.SpawnEnemy(spawnInGold);
         }
-  
     }
 
     public void NextTurn()
@@ -369,8 +395,11 @@ public class GameManager : MonoBehaviour
                 }
             }
             turn++;
-           // resources += (buildings.Length * 2);
-            spawnManager_script.SpawnGold();
+            resources += (buildings.Length *2);
+           if(activeGold.Length < (buildings.Length * 1.5))
+            {
+                spawnManager_script.SpawnGold();
+            }
             InstantiateEnemies();
         }
     }

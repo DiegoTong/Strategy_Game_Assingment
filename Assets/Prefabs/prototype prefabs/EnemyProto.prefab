@@ -109,15 +109,17 @@ MonoBehaviour:
   id: 0
   spawnManager_script: {fileID: 0}
   unitName: 
-  gridTile: {fileID: 0}
+  gridTile: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
   hasValidTarget: 0
   seletcableTiles: []
   visibleTiles: []
   allTiles: []
   deathsound: 1
+  explosion: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
   targets: []
   closestTarget: {x: 0, y: 0, z: 0}
   activeTarget: {fileID: 0}
+  spawnManager_audio_source: {fileID: 0}
 --- !u!54 &129960117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,8 +147,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3375721, y: 1.747257, z: 0.25340033}
-  m_Center: {x: 0.0077314377, y: -0.3736285, z: 0.052328825}
+  m_Size: {x: 0.3375721, y: 1.095979, z: 0.25340033}
+  m_Center: {x: 0.0077314377, y: -0.047989488, z: 0.052328825}
 --- !u!1001 &4397636400510737863
 PrefabInstance:
   m_ObjectHideFlags: 0

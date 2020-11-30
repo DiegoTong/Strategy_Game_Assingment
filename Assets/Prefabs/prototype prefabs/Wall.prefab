@@ -110,7 +110,7 @@ MonoBehaviour:
   audioManager_Script: {fileID: 0}
   vision: 6
   health: 150
-  maxHealth: 0
+  maxHealth: 150
   attack: 0
   movement: 0
   gameManager_script: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   visibleTiles: []
   allTiles: []
   deathsound: 4
+  explosion: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
 --- !u!54 &1083415044
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3629033100448234380}
   - component: {fileID: 3629033100448234381}
   - component: {fileID: 3629033100448234370}
-  - component: {fileID: 3629033100448234371}
   - component: {fileID: 3629033100448234383}
+  - component: {fileID: 8546064752132826463}
   m_Layer: 0
   m_Name: Gold Ore
   m_TagString: Gold
@@ -82,19 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &3629033100448234371
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3629033100448234368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3629033100448234383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111,6 +98,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8546064752132826463
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629033100448234368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.41155338, y: 0.67675495, z: 0.52682686}
+  m_Center: {x: -0.023570538, y: 0.099060535, z: -0.044618607}
 --- !u!1001 &3812544875275157428
 PrefabInstance:
   m_ObjectHideFlags: 0

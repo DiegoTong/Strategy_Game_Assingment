@@ -423,6 +423,7 @@ MonoBehaviour:
   visibleTiles: []
   allTiles: []
   deathsound: 4
+  explosion: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
 --- !u!54 &540223208
 Rigidbody:
   m_ObjectHideFlags: 0

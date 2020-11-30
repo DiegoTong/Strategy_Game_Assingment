@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject activeUnityToSpawn;
     public GridBehaviour gB;
     public bool spawningUnit;
-    public int limitMax = 70;
+    public int limitMax = 40;
     public int limitMin = 0;
 
 
@@ -92,18 +92,17 @@ public class SpawnManager : MonoBehaviour
         int posz;
         if (isEnemy == true)
         {
-            posX = Random.Range(-1, 1);
-            posz = Random.Range(-1, 1);
-            randomPos = new Vector3(posX, 0.5f, posz);
+            posX = Random.Range(-2, 2);
+            posz = Random.Range(-2, 2);
+            randomPos = new Vector3(posX, 0.0f, posz);
         }
         else
         {
             while (cantSpawn)
             {
-
                 posX = Random.Range(limitMin, limitMax);
                 posz = Random.Range(limitMin, limitMax);
-                randomPos = gB.gridArray[posX, posz].gameObject.transform.position;
+                randomPos = new Vector3(posX, 1.0f, posz);
                 cantSpawn = gB.gridArray[posX, posz].GetComponent<GridStats>().isVisible;
             }
         }

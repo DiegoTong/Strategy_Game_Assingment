@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UnityStandardAssets.Water.Displace" Collapsed="true">
+    <Position X="13.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACEA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\Displace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.GerstnerDisplace" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\GerstnerDisplace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.MeshContainer" Collapsed="true">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAABAAAAAAAAAAAAARAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\MeshContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.PlanarReflection" Collapsed="true">
+    <Position X="12" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQgAAAAkDAAgAEAAAAEIAEASgMAgBAMAAAAABAACAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\PlanarReflection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.SpecularLighting" Collapsed="true">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAABAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\SpecularLighting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.Water" Collapsed="true">
+    <Position X="15.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQkACAAARCAgAAAAgCAIAIAgAAIEAAIAAAEABEAAAQ=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\Water.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.WaterBase" Collapsed="true">
+    <Position X="17.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAIAAAAAAAAAAAAAAAEAQAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.WaterTile" Collapsed="true">
+    <Position X="12" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAACAAAAAAAAAAAAAAICAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\WaterTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityStandardAssets.Water.WaterBasic" Collapsed="true">
+    <Position X="10.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water (Basic)\Scripts\WaterBasic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioManager" Collapsed="true">
+    <Position X="10.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIkACAAAAAAAAAAAAAAAAAQBAAAAAAgAAAAEAg=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FrontCamera" Collapsed="true">
+    <Position X="12" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\FrontCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="13.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MASAABQAAiAMgHMoRIEAAACAgIAEIAIAAVAQEAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RotateCamera" Collapsed="true">
+    <Position X="13.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACIAAAAEAAAAAAAAAAAAAAAAAAAAAABAAAg=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\RotateCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnManager" Collapsed="true">
+    <Position X="10.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQQCAQiACAAAAABBQABAAAACAACgAABAAQEgICQAAA=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\SpawnManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager" Collapsed="true">
+    <Position X="13.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEQQIgAAQCgAQIQAAAMQDAEAEAAQAgAAAACkAEAQAAI=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuManager" Collapsed="true">
+    <Position X="17.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAQAAAIAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Scripts\Menu Script\MainMenuManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RotatePlanet" Collapsed="true">
+    <Position X="15.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menu Script\RotatePlanet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rotation" Collapsed="true">
+    <Position X="17.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Menu Script\Rotation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Movement" Collapsed="true">
+    <Position X="0.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAACAgAAAAAAAAQAAAAAAUAAAAQAAAAAAAABA=</HashCode>
+      <FileName>Assets\Scripts\Tile Scripts\Movement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnTile" Collapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIACAAAAAAAAAAAAAAAAAAAoAAQAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Tile Scripts\SpawnTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Builder" Collapsed="true">
+    <Position X="3.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Unit scripts\Builder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Building" Collapsed="true">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Unit scripts\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQgAASAAAAAEAAABEAQAgAAAAAAAAABAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Unit scripts\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fighter" Collapsed="true">
+    <Position X="1" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Unit scripts\Fighter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GridBehaviour" Collapsed="true">
+    <Position X="15.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAyAAAAAgAABAAAAChAAAAAAECAAAAgAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Unit scripts\GridBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GridStats" Collapsed="true">
+    <Position X="2" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AERAAAAEQCAACADQIBQKAgAAoEAAAICAQABiAAEQABk=</HashCode>
+      <FileName>Assets\Scripts\Unit scripts\GridStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnitController" Collapsed="true">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAQgZICAEAAEgCEEDFgAAAUAAFCCBQACCAgEAAgg=</HashCode>
+      <FileName>Assets\Scripts\Unit scripts\UnitController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="UnityStandardAssets.Water.WaterQuality" Collapsed="true">
+    <Position X="10.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Imported\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
