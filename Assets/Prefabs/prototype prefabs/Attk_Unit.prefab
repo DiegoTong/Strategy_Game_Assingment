@@ -95,9 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd5bb1927f5ec45bd68f2f9055f7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager_Script: {fileID: 0}
+  vision: 6
   health: 150
-  attack: 80
-  movement: 3
+  maxHealth: 0
+  attack: 40
+  movement: 4
   gameManager_script: {fileID: 0}
   movement_Tile_Prefab: {fileID: 6468701462941695297, guid: fb5ffad0219ebd244b41d2f3daec9b5e,
     type: 3}
@@ -109,6 +112,10 @@ MonoBehaviour:
   unitName: 
   gridTile: {fileID: 0}
   hasValidTarget: 0
+  seletcableTiles: []
+  visibleTiles: []
+  allTiles: []
+  deathsound: 0
 --- !u!54 &504366368
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -93,6 +93,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  current: 0
+  target: 0
+  selectable: 0
+  highlight: 0
+  isVisible: 0
+  darkness: {fileID: 0}
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  prevousGrid: {fileID: 0}
+  visited: 0
+  visionVisited: 0
+  parent: {fileID: 0}
+  visionParent: {fileID: 0}
+  distance: 0
+  visionDistance: 0
+  neighbours: []
+  objectOnTileType: 0
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  currentObjectOnTile: {fileID: 0}
+  adjlist: []
+  hasObjOn: 0
 --- !u!65 &927855736298070673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -199,6 +223,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  current: 0
+  target: 0
+  selectable: 0
+  highlight: 0
+  isVisible: 0
+  darkness: {fileID: 0}
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  prevousGrid: {fileID: 0}
+  visited: 0
+  visionVisited: 0
+  parent: {fileID: 0}
+  visionParent: {fileID: 0}
+  distance: 0
+  visionDistance: 0
+  neighbours: []
+  objectOnTileType: 0
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  currentObjectOnTile: {fileID: 0}
+  adjlist: []
+  hasObjOn: 0
 --- !u!65 &8836344895476733940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -341,8 +389,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.0953922, z: 1}
+  m_Center: {x: 0, y: -0.047696114, z: 0}
 --- !u!114 &1321638832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd06df16d40ddce4d8b02ff6a9bc2b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  audioManager_Script: {fileID: 0}
+  vision: 10
+  health: 200
+  maxHealth: 200
   attack: 0
   movement: 0
   gameManager_script: {fileID: 0}
@@ -368,6 +419,10 @@ MonoBehaviour:
   unitName: 
   gridTile: {fileID: 0}
   hasValidTarget: 0
+  seletcableTiles: []
+  visibleTiles: []
+  allTiles: []
+  deathsound: 4
 --- !u!54 &540223208
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -477,6 +532,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  current: 0
+  target: 0
+  selectable: 0
+  highlight: 0
+  isVisible: 0
+  darkness: {fileID: 0}
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  prevousGrid: {fileID: 0}
+  visited: 0
+  visionVisited: 0
+  parent: {fileID: 0}
+  visionParent: {fileID: 0}
+  distance: 0
+  visionDistance: 0
+  neighbours: []
+  objectOnTileType: 0
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  currentObjectOnTile: {fileID: 0}
+  adjlist: []
+  hasObjOn: 0
 --- !u!65 &5133591688662134411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -583,6 +662,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81abd995f317e34e8c2d8dbff0cfba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
+  current: 0
+  target: 0
+  selectable: 0
+  highlight: 0
+  isVisible: 0
+  darkness: {fileID: 0}
+  gCost: 0
+  hCost: 0
+  fCost: 0
+  prevousGrid: {fileID: 0}
+  visited: 0
+  visionVisited: 0
+  parent: {fileID: 0}
+  visionParent: {fileID: 0}
+  distance: 0
+  visionDistance: 0
+  neighbours: []
+  objectOnTileType: 0
+  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  currentObjectOnTile: {fileID: 0}
+  adjlist: []
+  hasObjOn: 0
 --- !u!65 &6938221712245417491
 BoxCollider:
   m_ObjectHideFlags: 0

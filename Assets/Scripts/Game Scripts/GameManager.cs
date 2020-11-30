@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int resources;
@@ -13,28 +13,36 @@ public class GameManager : MonoBehaviour
     public GameObject nextUnit;
     public UIManager uiManager_script;
     public SpawnManager spawnManager_script;
+    public AudioManager audioManager_Script;
     public int number_of_builders;
     public GameObject[] activeUnits;
     public GameObject[] activeEnemyUnits;
     public GameObject[] activeGold;
+    public GameObject[] buildings;
+    public GameObject[] allFriendlyUnits;
     public bool gameOver;
     public int numb_of_Bases;
     public bool nextTurn;
     public bool spawnInGold;
     public bool selectingEnemy;
+    public int turn;
     public GameObject selectedUnit;
+    public int maxCap;
     public Vector3 offset;
     // Start is called before the first frame update
     void Start()
     {
+        turn = 1;
         offset = new Vector3 (0,2f,0);
         uiManager_script = GameObject.Find("Game Manager").GetComponent<UIManager>();
         spawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+        audioManager_Script = GameObject.Find("Game Manager").GetComponent<AudioManager>();
         gameOver = false;
         nextTurn = false;
         selectingEnemy = false;
         spawnManager_script.SpawnGold();
         spawnInGold = true;
+        maxCap = 5;
     }
 
     // Update is called once per frame
@@ -44,10 +52,7 @@ public class GameManager : MonoBehaviour
         CheckActiveUnits();
         CheckActionButton(nextTurn);
         CheckGameOver();
-    }
-    void SpawnGrid()
-    {
-
+        populateUI();
     }
     void SelectUnit()
     {
@@ -59,9 +64,9 @@ public class GameManager : MonoBehaviour
             //Debug.Log("Click");
             if (Physics.Raycast(ray, out hit))
             {
-                if (EventSystem.current.IsPointerOverGameObject(0))
+                if (EventSystem.current.IsPointerOverGameObject())
                 {
-                    return;
+                   
                 }
                 else
                 {
@@ -74,20 +79,22 @@ public class GameManager : MonoBehaviour
                         {
                             Indicator.SetActive(true);
                             Indicator.transform.position = new Vector3(hit.collider.gameObject.transform.position.x, 2.5f, hit.collider.gameObject.transform.position.z);
-                            if (hit.collider.name == "Unit(Clone)" || hit.collider.name == "Unit" || hit.collider.name == "Attk_Unit")
+                            nextUnit.GetComponent<UnitController>().removeSelectableTiles();
+                            if (hit.collider.tag == "Friendly")
                             {
                                 nextUnit = hit.collider.gameObject;
                                 uiManager_script.setStats(nextUnit.GetComponent<UnitController>());
                                 uiManager_script.spawnbutton.gameObject.SetActive(true);
-                                if(!nextUnit.GetComponent<UnitController>().hasMoved)
+                                if (!nextUnit.GetComponent<UnitController>().hasMoved)
                                 {
                                     uiManager_script.skipButton.gameObject.SetActive(true);
+                                    nextUnit.GetComponent<UnitController>().FindSelectableTiles();
                                 }
                                 else
                                 {
                                     uiManager_script.skipButton.gameObject.SetActive(false);
                                 }
-                                if (nextUnit.GetComponent<UnitController>().hasValidTarget)
+                                if (nextUnit.GetComponent<UnitController>().hasValidTarget && nextUnit.GetComponent<UnitController>().hasActed == false)
                                 {
                                     uiManager_script.attacButton.gameObject.SetActive(true);
                                 }
@@ -95,44 +102,67 @@ public class GameManager : MonoBehaviour
                                 {
                                     uiManager_script.attacButton.gameObject.SetActive(false);
                                 }
-                                
+                                uiManager_script.disableUIBUttons();
                             }
                             else if (hit.collider.tag == "Enemy")
                             {
-                                uiManager_script.setStats();
+                                uiManager_script.setStats(hit.collider.GetComponent<UnitController>());
+                                uiManager_script.attacButton.gameObject.SetActive(false);
+                                uiManager_script.spawnbutton.gameObject.SetActive(false);
+                                uiManager_script.skipButton.gameObject.SetActive(false); 
+                                uiManager_script.disableUIBUttons();
+                            }
+                            else if (hit.collider.tag == "Base")
+                            {
+                                uiManager_script.setStats(hit.collider.GetComponent<UnitController>());
+                                uiManager_script.EnableSpawnButtons();
                                 uiManager_script.attacButton.gameObject.SetActive(false);
                                 uiManager_script.spawnbutton.gameObject.SetActive(false);
                                 uiManager_script.skipButton.gameObject.SetActive(false);
                             }
                             else
                             {
+                                nextUnit.GetComponent<UnitController>().removeSelectableTiles();
                                 uiManager_script.attacButton.gameObject.SetActive(false);
                                 uiManager_script.spawnbutton.gameObject.SetActive(false);
                                 uiManager_script.skipButton.gameObject.SetActive(false);
+                                uiManager_script.disableUIBUttons();
                             }
                             frontFacingCamera.transform.position = hit.collider.gameObject.transform.position + hit.collider.gameObject.transform.forward * 3 + offset;
                             frontFacingCamera.transform.LookAt(hit.collider.gameObject.transform);
                         }
                         else if (hit.collider.tag == "Tile" && (hit.collider.name == "Movement Tile" || hit.collider.name == "Movement Tile(Clone)"))
                         {
-                            hit.collider.GetComponent<Movement>().moveUnit();
+                            //hit.collider.GetComponent<Movement>().moveUnit();
                             uiManager_script.attacButton.gameObject.SetActive(false);
                             uiManager_script.spawnbutton.gameObject.SetActive(false);
                             uiManager_script.skipButton.gameObject.SetActive(false);
+                            uiManager_script.disableUIBUttons();
                         }
                         else if (hit.collider.tag == "Tile" && (hit.collider.name == "Spawn Tile" || hit.collider.name == "Spawn Tile(Clone)"))
                         {
-                            hit.collider.GetComponent<SpawnTile>().SpawnUnit();
+                            if ((allFriendlyUnits.Length < maxCap))
+                            {
+                                hit.collider.GetComponent<SpawnTile>().SpawnUnit();
+                            }                
                             uiManager_script.attacButton.gameObject.SetActive(false);
                             uiManager_script.spawnbutton.gameObject.SetActive(false);
                             uiManager_script.skipButton.gameObject.SetActive(false);
+                            uiManager_script.disableUIBUttons();
                         }
-                        //else if (hit.collider.tag == "Tile")
-                        //{
+                        else if (hit.collider.tag == "Tile")
+                        {
+                            if(hit.collider.gameObject.GetComponent<GridStats>().selectable)
+                            {
+                                nextUnit.transform.position = new Vector3(hit.collider.transform.position.x,1f, hit.collider.transform.position.z);
+                                GetAllVision();
+                                nextUnit.GetComponent<UnitController>().removeSelectableTiles();
+                                nextUnit.GetComponent<UnitController>().hasMoved = true;
+                            }
                         //    uiManager_script.attacButton.gameObject.SetActive(false);
                         //    uiManager_script.spawnbutton.gameObject.SetActive(false);
                         //    uiManager_script.skipButton.gameObject.SetActive(false);
-                        //}
+                        }
                     }
                     else
                     {
@@ -141,8 +171,10 @@ public class GameManager : MonoBehaviour
                         nextUnit.GetComponent<UnitController>().disableMovement();
                         if (hit.collider.tag == "Enemy")
                         {
-                            Debug.Log("Hit");                           
-                            hit.collider.GetComponent<UnitController>().health = hit.collider.GetComponent<UnitController>().health - nextUnit.GetComponent<UnitController>().attack;                         
+                            Debug.Log("Hit");
+                            audioManager_Script.loadClip(5);
+                            hit.collider.GetComponent<UnitController>().health = hit.collider.GetComponent<UnitController>().health - nextUnit.GetComponent<UnitController>().attack;
+                            nextUnit.GetComponent<UnitController>().hasActed = true;
                         }
                         else
                         {
@@ -155,6 +187,31 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+    public void populateUI()
+    {
+        buildings = GameObject.FindGameObjectsWithTag("Base");
+        allFriendlyUnits = GameObject.FindGameObjectsWithTag("Friendly");
+        maxCap = buildings.Length * 5;
+        
+        uiManager_script.updateUI(resources, turn, activeGold.Length, allFriendlyUnits.Length ,maxCap);
+    }
+
+
+    public void GetAllVision()
+    {
+
+        nextUnit.GetComponent<UnitController>().setDarkvision();
+        foreach (GameObject obj in allFriendlyUnits)
+        {
+            obj.GetComponent<UnitController>().removeVision();
+            obj.GetComponent<UnitController>().GiveVision();
+        }
+        foreach (GameObject obj in buildings)
+        {
+            obj.GetComponent<UnitController>().removeVision();
+            obj.GetComponent<UnitController>().GiveVision();
+        }
     }
     void CheckActiveUnits()
     {
@@ -172,11 +229,12 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Base").Length == 0)
         {
             gameOver = true;
+            SceneManager.LoadScene("Main Menu");
             Debug.Log("Game Over");
         }
     }
 
-        public void CheckActionButton()
+    public void CheckActionButton()
         {
         uiManager_script.actionButtonText.text = "Next Turn";
         if (activeUnits.Length > 0 && activeUnits.Length !=0)
@@ -191,32 +249,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        //    if (activeUnits.Length !=0)
-        //{
-        //    foreach (GameObject friendly in activeUnits)
-        //    {
-        //        if (activeUnits.Length != 0)
-        //        {
-        //            if (friendly.GetComponent<UnitController>().hasMoved == false)
-        //            {
-        //                if (nextUnit.CompareTag("Base"))
-        //                {
-        //                    uiManager_script.actionButtonText.text = "Unit Awaiting Order";
-        //                    nextUnit = friendly;
-        //                }
-        //                else if ((nextUnit.GetComponent<UnitController>().id != friendly.GetComponent<UnitController>().id))
-        //                {
-        //                    uiManager_script.actionButtonText.text = "Unit Awaiting Order";
-        //                    //  nextUnit = friendly;                   
-        //                }
-        //                nextTurn = false;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //}
-
     }
     public void CheckActionButton(bool checkNextTurn)
     {
@@ -239,16 +271,17 @@ public class GameManager : MonoBehaviour
     public void BuildHQ()
     {
         Debug.Log("Build");
+
         if (resources > 3 && GameObject.FindGameObjectsWithTag("Friendly").Length > 0)
         {
-            uiManager_script.spawnbuttonText.text = "Spawn Base";
+            audioManager_Script.loadClip(2);
             spawnManager_script.SpawnBase(nextUnit);
             CheckActionButton();
             resources--;
         }
         else
         {
-            uiManager_script.spawnbuttonText.text = "No Resources";
+
         }
     }
 
@@ -257,14 +290,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Build");
         if (resources > 3 && GameObject.FindGameObjectsWithTag("Friendly").Length > 0)
         {
-            uiManager_script.spawnbuttonText.text = "Spawn Base";
-            spawnManager_script.SpawnBase(nextUnit);
+            audioManager_Script.loadClip(2);
+            spawnManager_script.SpawnWall(nextUnit);
             CheckActionButton();
             resources--;
         }
         else
         {
-            uiManager_script.spawnbuttonText.text = "No Resources";
+
         }
     }
     public void Buildturret()
@@ -272,14 +305,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Build");
         if (resources > 3 && GameObject.FindGameObjectsWithTag("Friendly").Length > 0)
         {
+            audioManager_Script.loadClip(2);
             uiManager_script.spawnbuttonText.text = "Spawn Base";
-            spawnManager_script.SpawnBase(nextUnit);
+            spawnManager_script.SpawnTurret(nextUnit);
             CheckActionButton();
             resources--;
         }
         else
         {
-            uiManager_script.spawnbuttonText.text = "No Resources";
+        
         }
     }
     public void skipAction()
@@ -295,12 +329,12 @@ public class GameManager : MonoBehaviour
     {
         if (activeGold.Length>0)
         {
-            spawnInGold = true;
+            spawnInGold = false;
             spawnManager_script.SpawnEnemy(spawnInGold, activeGold[Random.Range(0, activeGold.Length)].transform.position);
         }
         else
         {
-            spawnInGold = false;
+            spawnInGold = true;
             spawnManager_script.SpawnEnemy(spawnInGold);
         }
   
@@ -323,6 +357,7 @@ public class GameManager : MonoBehaviour
                 foreach (GameObject friendly in activeUnits)
                 {
                     friendly.GetComponent<UnitController>().hasMoved = false;
+                    friendly.GetComponent<UnitController>().hasActed = false;
                     friendly.GetComponent<UnitController>().disableMovement();
                 }
             }
@@ -333,7 +368,8 @@ public class GameManager : MonoBehaviour
                     enemy.GetComponent<Enemy>().hasMoved = false;
                 }
             }
-
+            turn++;
+           // resources += (buildings.Length * 2);
             spawnManager_script.SpawnGold();
             InstantiateEnemies();
         }

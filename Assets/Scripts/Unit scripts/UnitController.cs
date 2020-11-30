@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
+    public AudioManager audioManager_Script;
+    public int vision;
     public int health;
+    public int maxHealth;
     public int attack;
     public int movement;
     public GameManager gameManager_script;
@@ -17,29 +20,43 @@ public class UnitController : MonoBehaviour
     public string unitName;
     public GameObject gridTile;
     public bool hasValidTarget;
+    public List<GridStats> seletcableTiles = new List<GridStats>();
+    public List<GridStats> visibleTiles = new List<GridStats>();
+    public GameObject[] allTiles;
+    public int deathsound;
+    Stack<GridStats> path = new Stack<GridStats>();
+
     // Start is called before the first frame update
     void Start()
     {
+        allTiles = GameObject.FindGameObjectsWithTag("Tile"); 
+        maxHealth = health;
         unitName = gameObject.name;
         gameManager_script = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawnManager_script = GameObject.Find("Spawn Manager").GetComponent<SpawnManager>();
+        audioManager_Script = GameObject.Find("Game Manager").GetComponent<AudioManager>();
         id = gameManager_script.number_of_builders;
         InstantiateTiles(movement);
         hasMoved = false;
         hasActed = false;
-
+        removeVision();
+        GiveVision();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckForTargets();
-        destroyUnit();
+          CheckForTargets();
+          destroyUnit(deathsound);
+      //  
     }
-    public void destroyUnit()
+    public void destroyUnit(int i)
     {
         if(health <=0)
         {
+            audioManager_Script.loadClip(i);
+            removeSelectableTiles();
+            removeVision();
             Destroy(gameObject);
         }
     }
@@ -76,9 +93,11 @@ public class UnitController : MonoBehaviour
         {
             gridTile = other.gameObject;
         }
-        if(this.gameObject.tag == "Base" && other.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy")
         {
-            this.gameObject.GetComponent<Building>().health -= this.gameObject.GetComponent<Building>().health - other.gameObject.GetComponent<Enemy>().attack;
+
+              this.gameObject.GetComponent<UnitController>().health = this.gameObject.GetComponent<UnitController>().health - other.gameObject.GetComponent<UnitController>().attack;
+             other.gameObject.GetComponent<UnitController>().health = 0;
         }
     }
     private void CheckForTargets()
@@ -126,6 +145,118 @@ public class UnitController : MonoBehaviour
                 Instantiate(movement_Tile_Prefab, gameObject.transform.position + new Vector3(p + i, -0.5f, 0), Quaternion.Euler(90.0f, 0.0f, 0.0f), gameObject.transform);
                 Instantiate(movement_Tile_Prefab, gameObject.transform.position + new Vector3(0, -0.5f, p + i), Quaternion.Euler(90.0f, 0.0f, 0.0f), gameObject.transform);
             }
+        }
+    }
+    public GameObject getTile(GameObject target)
+    {
+        RaycastHit hit;
+        GameObject targetTile = null;
+        if(Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1))
+        {
+            targetTile = hit.collider.gameObject;
+        }
+        return targetTile;
+    }
+    public void getCurrentTile()
+    {
+        gridTile = getTile(gameObject);
+        gridTile.GetComponent<GridStats>().current = true;
+    }
+    public void ComputeAdjacencyList()
+    {
+        foreach (GameObject gridT in allTiles)
+        {
+            GridStats t = gridT.gameObject.GetComponent<GridStats>();
+            t.findNeighbours();
+        }
+    }
+    //https://www.youtube.com/watch?v=2NVEqBeXdBk
+    public void FindSelectableTiles()
+    {
+        ComputeAdjacencyList();
+        getCurrentTile();
+        Queue<GridStats> process = new Queue<GridStats>();
+        process.Enqueue(gridTile.GetComponent<GridStats>());
+        gridTile.GetComponent<GridStats>().visited = true;
+        while(process.Count >0)
+        {
+            GridStats t = process.Dequeue(); 
+            seletcableTiles.Add(t);
+            t.selectable = true;
+            if (t.distance < movement)
+            {
+                foreach (GridStats tile in t.adjlist)
+                {
+                    if (!tile.visited)
+                    {
+                        tile.parent = t;
+                        tile.visited = true;
+                        tile.distance = 1 + t.distance;
+                        process.Enqueue(tile);
+                    }
+                }
+            }
+        }
+    }
+    public void GiveVision()
+    {
+        removeVision();
+        ComputeAdjacencyList();
+        getCurrentTile();
+        Queue<GridStats> process = new Queue<GridStats>();
+        process.Enqueue(gridTile.GetComponent<GridStats>());
+        gridTile.GetComponent<GridStats>().visionVisited = true;
+        while (process.Count > 0)
+        {
+            GridStats t = process.Dequeue();
+            visibleTiles.Add(t);
+            t.isVisible = true;
+            if (t.visionDistance < vision)
+            {
+                foreach (GameObject tile in t.neighbours)
+                {
+                    if (!tile.GetComponent<GridStats>().visionVisited)
+                    {
+                        tile.GetComponent<GridStats>().visionParent = t;
+                        tile.GetComponent<GridStats>().visionVisited = true;
+                        tile.GetComponent<GridStats>().visionDistance = 1 + t.visionDistance;
+                        process.Enqueue(tile.GetComponent<GridStats>());
+                    }
+                }
+            }
+        }
+    }
+    public void removeVision()
+    {
+        if (gridTile != null)
+        {
+            gridTile.GetComponent<GridStats>().current = false;
+        }
+        foreach (GridStats tile in visibleTiles)
+        {
+            tile.clearVision();
+        }
+        visibleTiles.Clear();
+    }
+    public void removeSelectableTiles()
+    {
+        if(gridTile != null)
+        {
+            gridTile.GetComponent<GridStats>().current = false;
+        }
+        foreach(GridStats tile in seletcableTiles)
+        {
+            tile.clear();
+        }
+        seletcableTiles.Clear();
+    }
+
+    public void setDarkvision()
+    {
+        foreach (GameObject gridT in allTiles)
+        {
+            GridStats t = gridT.gameObject.GetComponent<GridStats>();
+            t.isVisible = false;
         }
     }
 }

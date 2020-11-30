@@ -95,8 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e690b07dea7774cb3078ea16b953e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager_Script: {fileID: 0}
+  vision: 0
   health: 80
-  attack: 0
+  maxHealth: 80
+  attack: 100
   movement: 0
   gameManager_script: {fileID: 0}
   movement_Tile_Prefab: {fileID: 0}
@@ -108,6 +111,10 @@ MonoBehaviour:
   unitName: 
   gridTile: {fileID: 0}
   hasValidTarget: 0
+  seletcableTiles: []
+  visibleTiles: []
+  allTiles: []
+  deathsound: 1
   targets: []
   closestTarget: {x: 0, y: 0, z: 0}
   activeTarget: {fileID: 0}
@@ -138,8 +145,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3375721, y: 1.747257, z: 0.7004669}
-  m_Center: {x: 0.0077314377, y: -0.3736285, z: 0.014433265}
+  m_Size: {x: 0.3375721, y: 1.747257, z: 0.25340033}
+  m_Center: {x: 0.0077314377, y: -0.3736285, z: 0.052328825}
 --- !u!1001 &4397636400510737863
 PrefabInstance:
   m_ObjectHideFlags: 0

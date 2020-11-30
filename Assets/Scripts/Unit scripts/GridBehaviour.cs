@@ -39,6 +39,7 @@ public class GridBehaviour : MonoBehaviour
             {
                 GameObject gridTile = Instantiate(gridPrefab, new Vector3(leftBottomLocation.x + scale * i, 0.4f, leftBottomLocation.z + scale * j), gridPrefab.transform.rotation);
                 gridTile.transform.SetParent(gameObject.transform);
+                gridTile.GetComponent<GridStats>().visited = false;
                 gridTile.GetComponent<GridStats>().x = i;
                 gridTile.GetComponent<GridStats>().y = j;
                 gridArray[i, j] = gridTile;
@@ -49,7 +50,6 @@ public class GridBehaviour : MonoBehaviour
     {
         foreach (GameObject obj in gridArray)
         {
-            obj.GetComponent<GridStats>().visited = -1;
             if((obj.GetComponent<GridStats>().x - 1 <=0)|| (obj.GetComponent<GridStats>().x + 1 >= columns)|| (obj.GetComponent<GridStats>().y + 1 >= rows)||(obj.GetComponent<GridStats>().y - 1 <= 0))
             {
 
@@ -63,7 +63,5 @@ public class GridBehaviour : MonoBehaviour
             }
   
         }
-
-        gridArray[startX, startY].GetComponent<GridStats>().visited = 0;
     }
 }
