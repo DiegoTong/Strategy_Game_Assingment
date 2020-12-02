@@ -42,7 +42,8 @@ public class SpawnManager : MonoBehaviour
     {
         if (activeUnit.name == "Unit(Clone)")
         {
-            Instantiate(turret, activeUnit.transform.position, activeUnit.transform.rotation);
+            GameObject newTurret = Instantiate(turret, activeUnit.transform.position, activeUnit.transform.rotation);
+            newTurret.transform.position = new Vector3(newTurret.transform.position.x, 0.5f, newTurret.transform.position.z);
             Destroy(activeUnit);
         }
     }

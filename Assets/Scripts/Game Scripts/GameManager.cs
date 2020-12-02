@@ -310,6 +310,7 @@ public class GameManager : MonoBehaviour
         {
 
         }
+        uiManager_script.disableUIBUttons();
     }
 
     public void BuildWall()
@@ -326,6 +327,7 @@ public class GameManager : MonoBehaviour
         {
 
         }
+        uiManager_script.disableUIBUttons();
     }
     public void Buildturret()
     {
@@ -342,6 +344,7 @@ public class GameManager : MonoBehaviour
         {
         
         }
+        uiManager_script.disableUIBUttons();
     }
     public void skipAction()
     {
@@ -396,11 +399,14 @@ public class GameManager : MonoBehaviour
             }
             turn++;
             resources += (buildings.Length *2);
-           if(activeGold.Length < (buildings.Length * 1.5))
+           if(activeGold.Length < (buildings.Length * 3))
             {
                 spawnManager_script.SpawnGold();
             }
-            InstantiateEnemies();
+           foreach(GameObject enemySpawn in activeGold)
+            {
+                InstantiateEnemies();
+            }
         }
     }
 }

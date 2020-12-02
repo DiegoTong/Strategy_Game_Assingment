@@ -86,6 +86,8 @@ public class UIManager : MonoBehaviour
         BuildHQButton.gameObject.SetActive(false);
         BuildTurretButton.gameObject.SetActive(false);
         BuildWallButton.gameObject.SetActive(false);
+        skipButton.gameObject.SetActive(false);
+        spawnbutton.gameObject.SetActive(false);
     }
     
 }

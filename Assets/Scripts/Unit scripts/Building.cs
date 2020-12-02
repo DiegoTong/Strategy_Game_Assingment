@@ -16,6 +16,8 @@ public class Building : UnitController
     // Update is called once per frame
     void Update()
     {
+        CheckForTargets();
         destroyUnit(deathsound);
+        hasMoved = true;
     }
 }

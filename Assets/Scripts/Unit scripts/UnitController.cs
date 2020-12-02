@@ -101,7 +101,7 @@ public class UnitController : MonoBehaviour
              other.gameObject.GetComponent<UnitController>().health = 0;
         }
     }
-    private void CheckForTargets()
+    public void CheckForTargets()
     {
         foreach (GameObject obj in gridTile.GetComponent<GridStats>().neighbours)
         {

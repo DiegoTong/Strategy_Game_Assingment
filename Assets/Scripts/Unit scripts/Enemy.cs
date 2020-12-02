@@ -138,6 +138,7 @@ public class Enemy : UnitController
     }
     private void CheckForTargets()
     {
+        targets = GameObject.FindGameObjectsWithTag("Base");
         activeTarget = null;
         float distance = Mathf.Infinity;
         foreach (GameObject chooseTarget in targets)
