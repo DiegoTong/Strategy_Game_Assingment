@@ -171,9 +171,9 @@ GameObject:
   - component: {fileID: 6213505985978362637}
   - component: {fileID: 6213505985979460045}
   - component: {fileID: 6213505985988936909}
-  - component: {fileID: 4929895387040061200}
   - component: {fileID: 1424167959}
   - component: {fileID: 1424167960}
+  - component: {fileID: 2914946463809063737}
   m_Layer: 0
   m_Name: GatlingTower
   m_TagString: Friendly
@@ -262,40 +262,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4929895387040061200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6213505985981658893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cd5bb1927f5ec45bd68f2f9055f7ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioManager_Script: {fileID: 0}
-  vision: 6
-  health: 70
-  maxHealth: 70
-  attack: 200
-  movement: 0
-  gameManager_script: {fileID: 0}
-  movement_Tile_Prefab: {fileID: 6468701462941695297, guid: fb5ffad0219ebd244b41d2f3daec9b5e,
-    type: 3}
-  hasMoved: 0
-  hasActed: 0
-  isSelected: 0
-  id: 0
-  spawnManager_script: {fileID: 0}
-  unitName: 
-  gridTile: {fileID: 0}
-  hasValidTarget: 0
-  seletcableTiles: []
-  visibleTiles: []
-  allTiles: []
-  deathsound: 4
-  explosion: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
 --- !u!54 &1424167959
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -325,6 +291,40 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1902623, y: 5.9598513, z: 1.2650175}
   m_Center: {x: -0.24601994, y: 1.9799247, z: 0.2874922}
+--- !u!114 &2914946463809063737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213505985981658893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd06df16d40ddce4d8b02ff6a9bc2b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioManager_Script: {fileID: 0}
+  vision: 4
+  health: 40
+  maxHealth: 40
+  attack: 150
+  movement: 0
+  gameManager_script: {fileID: 0}
+  movement_Tile_Prefab: {fileID: 6468701462941695297, guid: fb5ffad0219ebd244b41d2f3daec9b5e,
+    type: 3}
+  hasMoved: 0
+  hasActed: 0
+  isSelected: 0
+  id: 0
+  spawnManager_script: {fileID: 0}
+  unitName: 
+  gridTile: {fileID: 0}
+  hasValidTarget: 0
+  seletcableTiles: []
+  visibleTiles: []
+  allTiles: []
+  deathsound: 4
+  explosion: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
 --- !u!1 &6213505985981658895
 GameObject:
   m_ObjectHideFlags: 0
